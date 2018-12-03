@@ -7,18 +7,39 @@
     "start": "npm run develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.{ts,tsx,md}\"",
+    "lint": "tslint 'src/**/*.{ts,tsx}' -p tsconfig.json",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
+    "test": "npm run type-check && npm run lint",
+    "type-check": "tsc"
   },
   "dependencies": {
+    "emotion": "^10.0.1",
+    "emotion-server": "^10.0.1",
     "gatsby": "^2.0.33",
+    "gatsby-plugin-emotion": "^2.0.7",
+    "gatsby-plugin-typescript": "^2.0.2",
     "react": "^16.5.1",
-    "react-dom": "^16.5.1"
+    "react-dom": "^16.5.1",
+    "react-emotion": "^10.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.15.3"
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
+    "@types/node": "^10.12.11",
+    "@types/react": "^16.7.11",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-helmet": "^5.0.7",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-emotion": "^10.0.0",
+    "babel-preset-gatsby": "^0.1.6",
+    "prettier": "^1.15.3",
+    "tailwind.macro": "^0.5.10",
+    "tailwindcss": "^0.7.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.1"
   }
 }
